@@ -1,0 +1,16 @@
+name: push project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: install dependencies
+        uses: npm ci
+      - name: Run lints
+        uses: npm lint
+      - name: Run tests
+        uses: npm test
+      - name: Run builds
+        uses: npm build
